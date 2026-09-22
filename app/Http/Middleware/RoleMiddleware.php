@@ -19,7 +19,8 @@ class RoleMiddleware
         //     return redirect()->route('dashboard')->with('error', 'You are not authorized to access this page.');
         //  }
         if($request->user() && $request->user()->role !== $role = $request->user()->role) {
-            return redirect()->route('dashboard')->with('error', 'You are not authorized to access this page.');
+            //return redirect()->route('dashboard')->with('error', 'You are not authorized to access this page.');
+            return abort(403, 'Unauthorized action.');
 
         }
         return $next($request);
